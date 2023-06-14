@@ -1,0 +1,11 @@
+<body>
+    <Section> 
+        <object data="" type="text">Username : {{user.username}}</object><br>
+        <object data="" type="text">Email : {{user.email}}</object>
+    </Section>
+    {{#each posts}}
+    <div class="container">
+        {{> card this }}
+    </div>
+    {{/each }}
+</body>

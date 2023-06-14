@@ -1,0 +1,53 @@
+<body>
+    <Section class="Posts">
+        <img src="" alt="">
+        <p>name of author :<br>
+           timestamp :</p><br>
+        <object data="" type="video">video</object><br>
+
+        <Section>
+            <input type="text" name="comments" id="comm" placeholder="comments"> 
+            <button type="button" value="SUBMIT" id="comment-button">
+        </Section>
+
+    <script>
+        document.getElementById("comment-button").addEventListener('click',function (ev)
+        {
+            let commentText = document.getElementById("comment-text").value;
+            if(!commentText) return;
+            console.log(ev.currentTarget.dataset.postid);
+            let postId = ev.currentTarget.dataset.postid;
+            fetch("/comments/create",
+            {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(
+                        {
+                            postId: postId,
+                            commentText: commentText
+                        }
+                )
+            })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        var comments = document.getElementById("comments");
+                        let commentFragment = document.createElement("template");
+                        commentFragment.innerHTML = `<div class="comment"
+                        <strong class="comment-author">${data.username}</strong>
+                        <span class="comment-date">${(new Date()).toLocaleString(
+                            "en-us",{
+                                dateStyle: "long",
+                                timeStyle: "medium"
+                                })}
+                        </span>
+                            <div class="comment-text">${data.commentText}</div>
+                            </div>`;
+                        comments.append(commentFragment.content.firstChild);
+
+                    })
+                    .catch(err => console)
+        });
+    </script>
+    </Section>
+</body>

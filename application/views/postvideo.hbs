@@ -1,0 +1,25 @@
+<body>
+    <Section><h1 id="post_vid_text">Post Video:</h1></Section>
+
+    <form action="/posts/create" 
+        method="POST"
+        enctype="multipart/form-data"
+        class="post_vid_form">
+        <label for="ptitle">Post Title : </label>
+        <input type="text" name="title" id="ptitle" placeholder="Title" required><br>
+
+        <label for="pdesc">Post Description :</label>
+        <input type="text" name="description" id="pdesc" placeholder="Description here" required><br>
+
+        <label for="video">Post Video :</label>
+        <input type="file" name="uploadvideo" id="video"><br>
+
+        <input type="checkbox" name="utandc" id="utandc"><label for="utandc">Confirm that you accept the terms and conditions for uploading videos.</label><br>
+
+        <button type="submit" value="Submit">
+    </form>
+
+    <footer>
+        <p>Lakshya's assignment.&copy; </p>
+    </footer>
+</body>

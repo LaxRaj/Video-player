@@ -1,0 +1,32 @@
+<nav>
+    <div class="side_nav"> 
+        <li> Logo </li>
+    </div>
+
+    <a href="/">Home</a>
+
+    <div class="searchBar">
+        <form action="/posts/search"
+            method="get"
+            enctype="application/x-www-form-urlencoded">
+            
+            <input type="text" name="searchValue" id="search" placeholder="Search">
+            <button value="Submit"></button>
+        </form>
+    </div>
+    {{!-- <a href="/viewpost">View Posts</a> --}}
+
+
+    <a href="/postvideo">post</a>
+
+    <a href="logout">logout</a>
+
+    {{#if isLoggedIn}}
+    <a href="/profile">Hi,{{user.username}}</a>
+    {{else}}
+    <a href="/login">Log In</a>
+    {{/if}}
+
+    {{!-- <a href="/registration">Registration</a> --}}
+
+</nav>
